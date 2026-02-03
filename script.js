@@ -1,4 +1,4 @@
-    const username = document.getElementById("username");
+const username = document.getElementById("username");
     const password = document.getElementById("password");
     const checkbox = document.getElementById("checkbox");
     const existing = document.getElementById("existing");
