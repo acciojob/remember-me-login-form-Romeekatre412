@@ -1,36 +1,31 @@
-const form = document.getElementById("form");
-    const usernameInput = document.getElementById("username");
-    const passwordInput = document.getElementById("password");
-    const rememberCheckbox = document.getElementById("checkbox");
-    const existingBtn = document.getElementById("existing");
+    const username = document.getElementById("username");
+    const password = document.getElementById("password");
+    const checkbox = document.getElementById("checkbox");
+    const existing = document.getElementById("existing");
 
-    const savedUsername = localStorage.getItem("username");
-    const savedPassword = localStorage.getItem("password");
-
-    if (savedUsername && savedPassword) {
-      existingBtn.style.display = "block";
+    if (
+      localStorage.getItem("username") &&
+      localStorage.getItem("password")
+    ) {
+      existing.style.display = "block";
     }
 
-    form.addEventListener("submit", function (e) {
+    document.querySelector("form").addEventListener("submit", function (e) {
       e.preventDefault();
 
-      const username = usernameInput.value;
-      const password = passwordInput.value;
+      alert(`Logged in as ${username.value}`);
 
-      alert(`Logged in as ${username}`);
-
-      if (rememberCheckbox.checked) {
-        localStorage.setItem("username", username);
-        localStorage.setItem("password", password);
-        existingBtn.style.display = "block";
+      if (checkbox.checked) {
+        localStorage.setItem("username", username.value);
+        localStorage.setItem("password", password.value);
+        existing.style.display = "block";
       } else {
         localStorage.removeItem("username");
         localStorage.removeItem("password");
-        existingBtn.style.display = "none";
+        existing.style.display = "none";
       }
     });
 
-    existingBtn.addEventListener("click", function () {
-      const savedUser = localStorage.getItem("username");
-      alert(`Logged in as ${savedUser}`);
+    existing.addEventListener("click", function () {
+      alert(`Logged in as ${localStorage.getItem("username")}`);
     });
